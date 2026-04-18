@@ -1,5 +1,2 @@
 [variables]
 NIXPACKS_JDK_VERSION = "8"
-
-[phases.setup]
-nixPkgs = ["...", "jdk8", "maven"]
