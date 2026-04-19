@@ -13,8 +13,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
-
 @RestController
 @RequestMapping("/public")
 @Slf4j
