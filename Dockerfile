@@ -6,5 +6,9 @@ RUN mvn clean package -DskipTests
 # Step 2: Run using Eclipse Temurin (Industry Standard)
 FROM eclipse-temurin:17-jdk-jammy
 COPY --from=build /target/*.jar app.jar
+# ... baaki purana code (FROM, COPY, etc.) ...
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Is line ko update karo:
+ENTRYPOINT ["java", "-Dserver.port=${PORT:8080}", "-jar", "app.jar"]
