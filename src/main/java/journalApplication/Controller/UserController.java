@@ -41,6 +41,7 @@ public class UserController {
        User userInDb=userService.findByUsername(username);
        userInDb.setUsername(user.getUsername());
        userInDb.setPassword(user.getPassword());
+       userInDb.setCity(user.getCity());
        userService.saveNewUser(userInDb);
        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -56,7 +57,15 @@ public class UserController {
     @GetMapping("/weather-check")
     public ResponseEntity<?> greeting() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String city="Badargadh,Palanpur";
+        String username= authentication.getName();
+        User userInDb = userService.findByUsername(username);
+        String city=userInDb.getCity();
+
+        if(city==null || city.isEmpty())
+        {
+            return new ResponseEntity<>("Hi "+username+",please update your city in your profile first",HttpStatus.BAD_REQUEST);
+        }
+
         WeatherResponse weatherResponse = weatherService.getWeather(city);
         String greeting = "";
 
