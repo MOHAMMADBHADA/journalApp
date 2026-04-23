@@ -24,11 +24,11 @@ public class User
     private String username;
     private String email;
     private boolean sentimentAnalisys;
+    private String city;
     @NonNull
     private String password;
 
     @DBRef
     private List<JournalEntry> journalEntries=new ArrayList<>();
     private List<String> role;
-    private String city;
 }
