@@ -26,6 +26,10 @@ public class WeatherService
 
     public WeatherResponse getWeather(String city)
     {
+        if(city==null || city.isEmpty())
+        {
+            return null;
+        }
         WeatherResponse weatherResponse =redisService.get("weather_of_"+ city,WeatherResponse.class);
         if(weatherResponse!=null)
         {

@@ -36,6 +36,10 @@ public class PublicController {
 
     @PostMapping("/signup")
     public void signup(@RequestBody User user) {
+        if(user.getCity()==null || user.getCity().isEmpty())
+        {
+            user.setCity("New York");
+        }
         userService.saveNewUser(user);
     }
 
