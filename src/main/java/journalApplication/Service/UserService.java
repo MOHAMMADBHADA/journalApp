@@ -43,9 +43,17 @@ public class UserService
 
   public void saveAdmin(User user)
   {
-    user.setPassword(passwordEncoder.encode(user.getPassword()));
-    user.setRole(Arrays.asList("USER","ADMIN"));
-    userRepository.save(user);
+    User userInDb = userRepository.findByUsername(user.getUsername());
+    if (userInDb != null) {
+      if (!userInDb.getRole().contains("ADMIN")) {
+        userInDb.getRole().add("ADMIN");
+      }
+    }
+    else {
+      user.setPassword(passwordEncoder.encode(user.getPassword()));
+      user.setRole(Arrays.asList("USER","ADMIN"));
+      userRepository.save(user);
+    }
   }
 
   public void saveUser(User user)
