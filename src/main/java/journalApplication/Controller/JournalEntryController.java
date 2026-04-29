@@ -98,4 +98,4 @@ public class JournalEntryController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
-//controller --> Service --> Repository
+//controller --> service --> repository

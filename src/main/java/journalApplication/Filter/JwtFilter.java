@@ -66,7 +66,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         } catch (Exception e) {
             // Console me error dikhega par app crash nahi hogi (No 502)
-            System.out.println("JWT Filter Error: " + e.getMessage());
+            System.out.println("JWT filter Error: " + e.getMessage());
         }
 
         // STEP 4: Request ko aage badhao

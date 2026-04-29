@@ -70,4 +70,4 @@ public class JournalEntryService
   }
 }
 
-//Service --> Repository
+//service --> repository
